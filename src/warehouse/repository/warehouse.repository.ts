@@ -11,6 +11,10 @@ export class WarehouseRepository {
     private readonly warehouseModel: Model<Warehouse>,
   ) {}
 
+  async findAll(): Promise<Warehouse[]> {
+    return await this.warehouseModel.find().exec();
+  }
+
   async create(warehouse: WarehouseResponseDto): Promise<Warehouse> {
     return await this.warehouseModel.create(warehouse);
   }
