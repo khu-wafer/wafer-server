@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { LoginModule } from './login/login.module';
 import { ConfigModule } from '@nestjs/config';
 import { LoggerMiddleware } from './common/middlewares/logger/logger.middleware';
+import { WarehouseModule } from './warehouse/warehouse.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), LoginModule],
+  imports: [ConfigModule.forRoot(), LoginModule, WarehouseModule],
   controllers: [AppController],
   providers: [AppService],
 })
