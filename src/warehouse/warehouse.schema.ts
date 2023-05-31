@@ -20,6 +20,13 @@ export class Warehouse extends Document {
   })
   @IsString()
   @IsNotEmpty()
+  status: string;
+
+  @Prop({
+    required: true,
+  })
+  @IsString()
+  @IsNotEmpty()
   arrivalDate: string;
 
   @Prop({})

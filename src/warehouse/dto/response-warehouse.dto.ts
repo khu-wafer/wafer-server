@@ -7,6 +7,10 @@ export class WarehouseResponseDto {
 
   @IsString()
   @IsNotEmpty()
+  status: string;
+
+  @IsString()
+  @IsNotEmpty()
   arrivalDate: string;
 
   @IsString()
