@@ -40,6 +40,28 @@ export class Warehouse extends Document {
   @Prop({})
   @IsString()
   imgUrl: string;
+
+  readonly readOnlyData: {
+    id: string;
+    name: string;
+    arrivalDate: string;
+    shipmentDate: string;
+    departure: string;
+    arrivals: string;
+    imgUrl: string;
+  };
 }
 
 export const WarehouseSchema = SchemaFactory.createForClass(Warehouse);
+
+WarehouseSchema.virtual('readOnlyData').get(function (this: Warehouse) {
+  return {
+    id: this.id,
+    name: this.name,
+    arrivalDate: this.arrivalDate,
+    shipmentDate: this.shipmentDate,
+    departure: this.departure,
+    arrivals: this.arrivals,
+    imgUrl: this.imgUrl,
+  };
+});
