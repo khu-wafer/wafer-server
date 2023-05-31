@@ -23,4 +23,25 @@ export class UserService {
 
     return user.readOnlyData;
   }
+
+  async login(body: CreateUserDto) {
+    const { email, password } = body;
+
+    const user = await this.userRepository.findUserByEmail(email);
+
+    if (!user) {
+      throw new UnauthorizedException('존재하지 않는 유저 입니다.');
+    }
+
+    const isPasswordVaildated: boolean = await bcrypt.compare(
+      password,
+      user.password,
+    );
+
+    if (!isPasswordVaildated) {
+      throw new UnauthorizedException('이메일과 비밀번호를 확인해주세요.');
+    }
+
+    return user.readOnlyData;
+  }
 }

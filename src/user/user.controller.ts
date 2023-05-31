@@ -10,4 +10,9 @@ export class UserController {
   async signUp(@Body() body: CreateUserDto) {
     return await this.userService.signUp(body);
   }
+
+  @Post('login')
+  async login(@Body() body: CreateUserDto) {
+    return await this.userService.login(body);
+  }
 }
