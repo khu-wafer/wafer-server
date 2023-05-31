@@ -3,6 +3,7 @@ import { WarehouseController } from './warehouse.controller';
 import { WarehouseService } from './warehouse.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Warehouse, WarehouseSchema } from './warehouse.schema';
+import { WarehouseRepository } from './repository/warehouse.repository';
 
 @Module({
   imports: [
@@ -11,6 +12,6 @@ import { Warehouse, WarehouseSchema } from './warehouse.schema';
     ]),
   ],
   controllers: [WarehouseController],
-  providers: [WarehouseService],
+  providers: [WarehouseService, WarehouseRepository],
 })
 export class WarehouseModule {}
