@@ -51,6 +51,7 @@ export class Warehouse extends Document {
   readonly readOnlyData: {
     id: string;
     name: string;
+    status: string;
     arrivalDate: string;
     shipmentDate: string;
     departure: string;
@@ -65,6 +66,7 @@ WarehouseSchema.virtual('readOnlyData').get(function (this: Warehouse) {
   return {
     id: this.id,
     name: this.name,
+    status: this.status,
     arrivalDate: this.arrivalDate,
     shipmentDate: this.shipmentDate,
     departure: this.departure,
