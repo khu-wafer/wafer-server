@@ -1,3 +1,24 @@
-import { Warehouse } from '../warehouse.schema';
+import { IsNotEmpty, IsString } from 'class-validator';
 
-export class WarehouseResponseDto extends Warehouse {}
+export class WarehouseResponseDto {
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  arrivalDate: string;
+
+  @IsString()
+  shipmentDate: string;
+
+  @IsString()
+  @IsNotEmpty()
+  departure: string;
+
+  @IsString()
+  arrivals: string;
+
+  @IsString()
+  imgUrl: string;
+}
