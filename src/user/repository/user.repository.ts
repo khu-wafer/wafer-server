@@ -15,7 +15,7 @@ export class UserRepository {
       const result = await this.userModel.exists({ email });
       return !!result;
     } catch (error) {
-      throw new HttpException('User Not Found', 400);
+      throw new HttpException('DB Error', 400);
     }
   }
 
