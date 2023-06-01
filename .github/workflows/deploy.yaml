@@ -55,7 +55,7 @@ jobs:
         run: |
           touch .env
           echo PORT=8081 >> .env
-          echo MONGODB_URI=${{ secrets.MONGODB_URL }} >> .env
+          echo MONGODB_URI=${{ secrets.MONGODB_URI }} >> .env
           cat .env
 
       # Install Node.js
