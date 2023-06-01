@@ -57,7 +57,7 @@ jobs:
         working-directory: ${{ env.env-directory }}
         run: |
           touch .env
-          echo PORT=8081 >> .env
+          echo PORT=8080 >> .env
           echo MONGODB_URI=${{ secrets.MONGODB_URL }} >> .env
           cat .env
 
