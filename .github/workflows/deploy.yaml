@@ -32,12 +32,10 @@ jobs:
 
       # Install Node.js dependencies
       - name: Install dependencies
-        working-directory: ${{ env.working-directory }}
         run: pnpm install
 
       # Build Typescript
       - name: Run build
-        working-directory: ${{ env.working-directory }}
         run: pnpm run build
 
   # CD Pipeline
@@ -54,7 +52,6 @@ jobs:
 
       # Create .env file
       - name: Create .env file
-        working-directory: ${{ env.env-directory }}
         run: |
           touch .env
           echo PORT=8080 >> .env
@@ -76,17 +73,14 @@ jobs:
 
       # Install Node.js dependencies
       - name: Install dependencies
-        working-directory: ${{ env.working-directory }}
         run: pnpm install
 
       # Build Typescript
       - name: Run build
-        working-directory: ${{ env.working-directory }}
         run: pnpm run build
 
       # Install AWS CLI 2
       - name: Install AWS CLI 2
-        working-directory: ${{ env.working-directory }}
         run: |
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           unzip awscliv2.zip
@@ -104,7 +98,6 @@ jobs:
       # Make to ZIP file with source code
       # -x 명령어 뒤에 해당하는 파일은 zip 파일 생성 시 제외
       - name: Generate deployment Beanstalk
-        working-directory: ${{ env.working-directory }}
         run: zip -r deploy.zip . -x '*.git*' './src/*' './aws/*' awscliv2.zip
 
       # Get Current Time
