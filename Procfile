@@ -1,1 +1,1 @@
-web: pnpm eb:prod
+web: pnpm start:prod
