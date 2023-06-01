@@ -1,0 +1,1 @@
+web: pnpm eb:prod

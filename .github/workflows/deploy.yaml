@@ -6,38 +6,6 @@ on:
       - main
 
 jobs:
-  # CI Pipeline
-  build:
-    name: CI Pipeline
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: ['16.x']
-    steps:
-      # Checkout
-      - uses: actions/checkout@v3
-
-      # Install Node.js
-      - name: Install Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      # Install Pnpm
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
-          run_install: false
-
-      # Install Node.js dependencies
-      - name: Install dependencies
-        run: pnpm install
-
-      # Build Typescript
-      - name: Run build
-        run: pnpm run build
-
   # CD Pipeline
   deploy:
     name: CD Pipeline
@@ -54,7 +22,7 @@ jobs:
       - name: Create .env file
         run: |
           touch .env
-          echo PORT=8080 >> .env
+          echo PORT=8081 >> .env
           echo MONGODB_URI=${{ secrets.MONGODB_URL }} >> .env
           cat .env
 
